@@ -1,0 +1,937 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #DD761C;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  /* Tambahkan gaya lainnya sesuai kebutuhan */
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--gold);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+
+.cardBox .card:hover {
+  background: var(--gold);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 600;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.status.delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+/* ====================== Responsive Design ========================== */
+/* CSS Anda yang diperbaiki */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+/* table */
+.custom-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.custom-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.custom-table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.custom-table-sm th,
+.custom-table-sm td {
+  padding: 0.3rem;
+}
+
+.custom-table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.custom-table-bordered th,
+.custom-table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.custom-table-bordered thead th,
+.custom-table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.custom-table-borderless th,
+.custom-table-borderless td,
+.custom-table-borderless thead th,
+.custom-table-borderless tbody + tbody {
+  border: 0;
+}
+
+.custom-table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-table-hover tbody tr:hover {
+  color: #212529;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.custom-thead-primary th {
+  background-color: #b8daff;
+  border-color: #7abaff;
+}
+
+.custom-thead-primary th,
+.custom-thead-primary td,
+.custom-thead-primary thead th,
+.custom-thead-primary tbody + tbody {
+  border-color: #7abaff;
+}
+
+.custom-thead-primary:hover {
+  background-color: #9fcdff;
+}
+
+.custom-thead-primary:hover > td,
+.custom-thead-primary:hover > th {
+  background-color: #9fcdff;
+}
+
+.custom-thead-secondary th {
+  background-color: #d6d8db;
+  border-color: #b3b7bb;
+}
+
+.custom-thead-secondary th,
+.custom-thead-secondary td,
+.custom-thead-secondary thead th,
+.custom-thead-secondary tbody + tbody {
+  border-color: #b3b7bb;
+}
+
+.custom-thead-secondary:hover {
+  background-color: #c8cbcf;
+}
+
+.custom-thead-secondary:hover > td,
+.custom-thead-secondary:hover > th {
+  background-color: #c8cbcf;
+}
+
+.custom-thead-success th {
+  background-color: #c3e6cb;
+  border-color: #8fd19e;
+}
+
+.custom-thead-success th,
+.custom-thead-success td,
+.custom-thead-success thead th,
+.custom-thead-success tbody + tbody {
+  border-color: #8fd19e;
+}
+
+.custom-thead-success:hover {
+  background-color: #b1dfbb;
+}
+
+.custom-thead-success:hover > td,
+.custom-thead-success:hover > th {
+  background-color: #b1dfbb;
+}
+
+.custom-thead-info th {
+  background-color: #bee5eb;
+  border-color: #86cfda;
+}
+
+.custom-thead-info th,
+.custom-thead-info td,
+.custom-thead-info thead th,
+.custom-thead-info tbody + tbody {
+  border-color: #86cfda;
+}
+
+.custom-thead-info:hover {
+  background-color: #abdde5;
+}
+
+.custom-thead-info:hover > td,
+.custom-thead-info:hover > th {
+  background-color: #abdde5;
+}
+
+.custom-thead-warning th {
+  background-color: #ffeeba;
+  border-color: #ffdf7e;
+}
+
+.custom-thead-warning th,
+.custom-thead-warning td,
+.custom-thead-warning thead th,
+.custom-thead-warning tbody + tbody {
+  border-color: #ffdf7e;
+}
+
+.custom-thead-warning:hover {
+  background-color: #ffe8a1;
+}
+
+.custom-thead-warning:hover > td,
+.custom-thead-warning:hover > th {
+  background-color: #ffe8a1;
+}
+
+.custom-thead-danger th {
+  background-color: #f5c6cb;
+  border-color: #ed969e;
+}
+
+.custom-thead-danger th,
+.custom-thead-danger td,
+.custom-thead-danger thead th,
+.custom-thead-danger tbody + tbody {
+  border-color: #ed969e;
+}
+
+.custom-thead-danger:hover {
+  background-color: #f1b0b7;
+}
+
+.custom-thead-danger:hover > td,
+.custom-thead-danger:hover > th {
+  background-color: #f1b0b7;
+}
+
+.custom-thead-light th {
+  background-color: #fdfdfe;
+  border-color: #fbfcfc;
+}
+
+.custom-thead-light th,
+.custom-thead-light td,
+.custom-thead-light thead th,
+.custom-thead-light tbody + tbody {
+  border-color: #fbfcfc;
+}
+
+.custom-thead-light:hover {
+  background-color: #ececf6;
+}
+
+.custom-thead-light:hover > td,
+.custom-thead-light:hover > th {
+  background-color: #ececf6;
+}
+
+.custom-thead-dark th {
+  background-color: #c6c8ca;
+  border-color: #95999c;
+}
+
+.custom-thead-dark th,
+.custom-thead-dark td,
+.custom-thead-dark thead th,
+.custom-thead-dark tbody + tbody {
+  border-color: #95999c;
+}
+
+.custom-thead-dark:hover {
+  background-color: #b9bbbe;
+}
+
+.custom-thead-dark:hover > td,
+.custom-thead-dark:hover > th {
+  background-color: #b9bbbe;
+}
+
+.custom-thead-active th {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.custom-thead-hover:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.custom-table .thead-dark th {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #454d55;
+}
+
+.custom-table .thead-light th {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.custom-table-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.custom-table-dark th,
+.custom-table-dark td,
+.custom-table-dark thead th {
+  border-color: #454d55;
+}
+
+.custom-table-dark.table-bordered {
+  border: 0;
+}
+
+.custom-table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.custom-table-dark.table-hover tbody tr:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+/* CSS untuk tombol Download All */
+.download-button {
+    background-color: #4CAF50; /* Warna background */
+    border: none;
+    color: white; /* Warna teks */
+    padding: 10px 20px; /* Padding tombol */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px; /* Margin bawah untuk pemisahan dengan filter */
+    cursor: pointer;
+    border-radius: 5px; /* Bentuk border */
+}
+
+/* Hover effect untuk tombol Download All */
+.download-button:hover {
+    background-color: #45a049; /* Warna background saat dihover */
+}
+
+/* CSS untuk filter */
+.filter {
+    padding: 10px;
+    border: 1px solid #ccc; /* Border filter */
+    border-radius: 5px; /* Bentuk border */
+    margin-bottom: 20px; /* Margin bawah untuk pemisahan dengan tabel */
+}
+
+/* CSS untuk input filter */
+.filter input[type="text"] {
+   width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
+  transition: all 0.3s;
+}
+.button-group {
+    display: inline-block; /* Membuat tombol-tombol dalam satu baris */
+    margin-right: 10px; /* Menambahkan jarak horizontal antara tombol-tombol */
+}
+.insert-button {
+    background-color: #4CAF50; /* Warna latar belakang */
+    border: none; /* Hilangkan border */
+    color: white; /* Warna teks */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Teks rata tengah */
+    text-decoration: none; /* Hilangkan dekorasi teks */
+    display: inline-block; /* Tampilkan sebagai inline block */
+    font-size: 16px; /* Ukuran font */
+    margin: 4px 2px; /* Margin */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 8px; /* Border radius */
+}
+
+.insert-button:hover {
+    background-color: #45a049; /* Ubah warna latar belakang saat dihover */
+}
+.filter-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+.filter-button:focus {
+    outline: none;
+}
+
+.filter-button:active {
+    background-color: #004080;
+}
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Menampilkan elemen div sebagai inline-block */
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 15rem; /* Ubah min-width sesuai kebutuhan */
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.875rem;
+    text-align: right;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 0.5rem 0;
+}
+.dropdown-menu ion-icon {
+    vertical-align: middle;
+    margin-right: 0.5rem; /* Sesuaikan jarak ikon dengan teks sesuai keinginan Anda */
+}
+
+
+/* Profile Image Styles */
+.user img {
+    width: 32px; /* Sesuaikan lebar gambar */
+    height: 32px; /* Sesuaikan tinggi gambar */
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.custom-footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: #3d3a4e;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgba(150, 93, 233, 1) 10.8%,
+      rgba(99, 88, 238, 1) 94.3%
+    );
+    transition: all 0.475s;
+  }
+  .Btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100px;
+    height: 40px;
+    border: none;
+    padding: 0px 20px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px black;
+    transition-duration: 0.3s;
+  }
+
+  .svg {
+    width: 13px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    fill: white;
+    transition-duration: 0.3s;
+  }
+
+  .Btn:hover {
+    color: transparent;
+  }
+
+  .Btn:hover svg {
+    right: 43%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    transition-duration: 0.3s;
+  }
+
+  .Btn:active {
+    transform: translate(3px, 3px);
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 0px white;
+  }
